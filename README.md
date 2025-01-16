@@ -6,7 +6,7 @@ my dotfiles, managed by stow
 install the dependencies
 
 ```sh
-sudo apt install stow git wget curl unzip neovim ripgrep fzf pip pipx tree tmux bc coreutils gawk jq playerctl
+sudo apt install stow git wget curl unzip ripgrep fzf pip pipx tree tmux bc coreutils gawk jq playerctl
 ```
 
 ### fonts
@@ -39,7 +39,10 @@ To avoid later conflict, if you just installed omzsh, please remove .zshrc
 ### neovim
 
 ```sh
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz \
+&& sudo rm -rf /opt/nvim \
+&& sudo tar -C /opt -xzf nvim-linux64.tar.gz \
+&& git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim \
 && pipx install python-lsp-server \
 && pipx install python-lsp-black --include-deps \
