@@ -58,6 +58,13 @@ installing package manager (packer) and lsp for python
 pipx install aider-chat
 ```
 
+### uv
+
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+
 ## Usage
 
 ```sh
