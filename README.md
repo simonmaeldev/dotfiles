@@ -14,3 +14,9 @@ sudo apt install stow
 ```sh
 stow .
 ```
+
+If it throws an error because the files already exists, you can do
+```sh
+stow --adapt .
+```
+This will move all conflicting files to the repo **AND OVERRIDE THEM**. Good thing we are in git and can fix the changes.
