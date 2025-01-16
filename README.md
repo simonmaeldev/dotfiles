@@ -6,7 +6,7 @@ my dotfiles, managed by stow
 install the dependencies
 
 ```sh
-sudo apt install stow git wget curl unzip
+sudo apt install stow git wget curl unzip neovim ripgrep fzf pip pipx tree
 ```
 
 ### fonts
@@ -36,6 +36,19 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ```
 To avoid later conflict, if you just installed omzsh, please remove .zshrc
 
+### neovim
+
+```sh
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim \
+&& pipx install python-lsp-server \
+&& pipx install python-lsp-black --include-deps \
+&& pipx install pyhon-lsp-isort --include-deps \
+&& pipx install pylsp-mypy --include-deps
+```
+
+installing package manager (packer) and lsp for python
+
 ## Usage
 
 ```sh
@@ -48,6 +61,19 @@ stow --adapt .
 ```
 This will move all conflicting files to the repo **AND OVERRIDE THEM**. Good thing we are in git and can fix the changes.
 
+### Plugins installations
 
+#### neovim
+
+```sh
+cd $HOME/.config/nvim \
+nvim lua/apprentyr/packer.lua
+```
+
+```neovim
+:so
+:PackerSync
+```
+:so is to source the file, :PackerSync to install the packages
 
 
