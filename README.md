@@ -6,7 +6,7 @@ my dotfiles, managed by stow
 install the dependencies
 
 ```sh
-sudo apt install stow git wget curl unzip neovim ripgrep fzf pip pipx tree
+sudo apt install stow git wget curl unzip neovim ripgrep fzf pip pipx tree tmux bc coreutils gawk jq playerctl
 ```
 
 ### fonts
@@ -49,6 +49,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 
 installing package manager (packer) and lsp for python
 
+
 ## Usage
 
 ```sh
@@ -75,5 +76,15 @@ nvim lua/apprentyr/packer.lua
 :PackerSync
 ```
 :so is to source the file, :PackerSync to install the packages
+
+#### tmux
+
+```sh
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+tmux source ~/.config/tmux/tmux.conf
+```
+
+press `ctrl+b I` to Install the plugins
+
 
 
