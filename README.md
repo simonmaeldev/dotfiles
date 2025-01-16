@@ -64,6 +64,11 @@ pipx install aider-chat
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
+### ollama
+
+```sh
+curl -fsSL https://ollama.com/install.sh | sh
+```
 
 ## Usage
 
