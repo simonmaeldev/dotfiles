@@ -52,6 +52,11 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.
 
 installing package manager (packer) and lsp for python
 
+### aider
+
+```sh
+pipx install aider-chat
+```
 
 ## Usage
 
