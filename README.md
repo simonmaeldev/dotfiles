@@ -6,7 +6,7 @@ my dotfiles, managed by stow
 install the dependencies
 
 ```sh
-sudo apt install stow
+sudo apt install stow git wget curl
 ```
 
 ### fonts
@@ -29,6 +29,12 @@ If on a wsl, also downloads and install the fonts:
 - [monaspice](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Monaspace.zip)
 - [DejaVuSansMono](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/DejaVuSansMono.zip)
 
+### Oh my zsh
+
+```sh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+To avoid later conflict, if you just installed omzsh, please remove .zshrc
 
 ## Usage
 
@@ -41,3 +47,7 @@ If it throws an error because the files already exists, you can do
 stow --adapt .
 ```
 This will move all conflicting files to the repo **AND OVERRIDE THEM**. Good thing we are in git and can fix the changes.
+
+
+
+
