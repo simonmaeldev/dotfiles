@@ -6,7 +6,7 @@ my dotfiles, managed by stow
 install the dependencies
 
 ```sh
-sudo apt install stow git wget curl
+sudo apt install stow git wget curl unzip
 ```
 
 ### fonts
