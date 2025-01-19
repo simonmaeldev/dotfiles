@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nvmi="nvim"
 alias vim="nvim"
+alias nivm="nvim"
 
 export PATH="$HOME/.local/bin:$PATH:/opt/nvim-linux64/bin"
 export NVM_DIR="$HOME/.nvm"
