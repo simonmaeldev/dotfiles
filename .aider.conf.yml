@@ -45,7 +45,7 @@
 #35turbo: false
 
 ## Use deepseek/deepseek-chat model for the main chat
-#deepseek: false
+deepseek: true
 
 ## Use o1-mini model for the main chat
 #o1-mini: false
