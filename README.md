@@ -46,7 +46,7 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim \
 && pipx install python-lsp-server \
 && pipx install python-lsp-black --include-deps \
-&& pipx install pyhon-lsp-isort --include-deps \
+&& pipx install python-lsp-isort --include-deps \
 && pipx install pylsp-mypy --include-deps
 ```
 
