@@ -114,9 +114,9 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 # loading ssh agent
 if [ -z "$SSH_AUTH_SOCK" ]; then
