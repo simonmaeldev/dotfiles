@@ -73,7 +73,7 @@ ZSH_THEME="agnoster"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source /etc/environment
+# source /etc/environment
 
 # User configuration
 
