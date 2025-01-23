@@ -6,7 +6,7 @@ my dotfiles, managed by stow
 install the dependencies
 
 ```sh
-sudo apt install stow git wget curl unzip zsh ripgrep fzf pip pipx tree tmux bc coreutils gawk jq playerctl
+sudo apt install stow git wget curl unzip zsh ripgrep fzf pip pipx tree tmux bc coreutils gawk jq playerctl python3-debugpy
 ```
 
 ### fonts

@@ -25,5 +25,22 @@ return require('packer').startup(function(use)
   use({'hrsh7th/nvim-cmp'})
   use({'hrsh7th/cmp-nvim-lsp'})
 
+  -- to run tests
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      -- adapters here
+      "nvim-neotest/neotest-python"
+    }
+  }
+
+  -- to debug
+  use('mfussenegger/nvim-dap')
+  use('mfussenegger/nvim-dap-python')
+
   print("packer complete")
 end)
