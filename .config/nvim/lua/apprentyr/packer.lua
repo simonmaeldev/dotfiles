@@ -24,6 +24,16 @@ return require('packer').startup(function(use)
   use({'neovim/nvim-lspconfig'})
   use({'hrsh7th/nvim-cmp'})
   use({'hrsh7th/cmp-nvim-lsp'})
+  use({'williamboman/mason.nvim'})
+  use {
+    "nvimtools/none-ls.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
+      "nvimtools/none-ls-extras.nvim",
+      "jayp0521/mason-null-ls.nvim", -- ensure dependencies are installed
+    }
+  }
 
   -- to run tests
   use {
