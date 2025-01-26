@@ -42,5 +42,14 @@ return require('packer').startup(function(use)
   use('mfussenegger/nvim-dap')
   use('mfussenegger/nvim-dap-python')
 
+  -- to refactor
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+  }
+
   print("packer complete")
 end)

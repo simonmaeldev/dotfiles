@@ -47,7 +47,8 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.
 && pipx install python-lsp-server \
 && pipx install python-lsp-black --include-deps \
 && pipx install python-lsp-isort --include-deps \
-&& pipx install pylsp-mypy --include-deps
+&& pipx install pylsp-mypy --include-deps \
+&& pipx install pylint
 ```
 
 installing package manager (packer) and lsp for python
