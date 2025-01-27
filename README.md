@@ -46,6 +46,18 @@ To avoid later conflict, if you just installed omzsh, please remove .zshrc
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
+### nvm for npm for neovim
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+```
+
+Close and reopen a terminal
+
+```sh
+nvm install node
+```
+
 ### neovim
 
 ```sh
