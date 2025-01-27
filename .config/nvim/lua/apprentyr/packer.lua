@@ -49,8 +49,18 @@ return require('packer').startup(function(use)
   }
 
   -- to debug
-  use('mfussenegger/nvim-dap')
-  use('mfussenegger/nvim-dap-python')
+  use {
+    'mfussenegger/nvim-dap',
+    requires = {
+        'rcarriga/nvim-dap-ui', -- Creates a beautiful debbuger UI
+        'nvim-neotest/nvim-nio', -- Required dependency for nvim-dap-ui
+        -- Install the debugs adapters for you
+        'williamboman/mason.nvim',
+        'jay-babu/mason-nvim-dap.nvim',
+        -- Add the other debuggers here
+        'mfussenegger/nvim-dap-python',
+    }
+  }
 
   -- to refactor
   use {
