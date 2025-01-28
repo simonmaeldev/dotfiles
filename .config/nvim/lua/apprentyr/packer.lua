@@ -58,7 +58,7 @@ return require('packer').startup(function(use)
         'williamboman/mason.nvim',
         'jay-babu/mason-nvim-dap.nvim',
         -- Add the other debuggers here
-        'mfussenegger/nvim-dap-python',
+        'mfussenegger/nvim-dap-python'
     }
   }
 
