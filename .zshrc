@@ -107,11 +107,12 @@ alias nvmi="nvim"
 alias vim="nvim"
 alias nivm="nvim"
 
-export PATH="$HOME/.local/bin:$PATH:/opt/nvim-linux64/bin"
+export PATH="$HOME/.local/bin:$HOME/.local/scripts:$PATH:/opt/nvim-linux64/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+bindkey -s ^f "tmux-sessionizer\n"
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
