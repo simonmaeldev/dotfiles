@@ -33,6 +33,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.lsp.buf.code_action({ only = "source.organizeImports" })
     end, opts)
     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    vim.keymap.set('n', '<leader>rf', function()
+      vim.lsp.buf.execute_command({
+        command = 'ruff.applyAutofix',
+        arguments = {vim.api.nvim_buf_get_name(0)}
+      })
+    end, opts)
   end,
 })
 
@@ -41,19 +47,21 @@ require'lspconfig'.pylsp.setup {
   settings = {
     pylsp = {
       plugins = {
-        -- formatter options
+        jedi_completion = { 
+          enabled = true,
+          fuzzy = true,
+          include_params = true,
+          include_class_objects = true,
+          include_function_objects = true,
+        },
+        -- Disable other linters since we're using Ruff
         black = { enabled = false },
         autopep8 = { enabled = false },
         yapf = { enabled = false },
-        -- linter options
-        pylint = { enabled = false, executable = "pylint" },
+        pylint = { enabled = false },
         pyflakes = { enabled = false },
         pycodestyle = { enabled = false },
-        -- type checker
         pylsp_mypy = { enabled = false },
-        -- auto-completion options
-        jedi_completion = { fuzzy = false },
-        -- import sorting
         pyls_isort = { enabled = false },
       },
     },
@@ -70,6 +78,7 @@ local cmp = require('cmp')
 cmp.setup({
   sources = {
     {name = 'nvim_lsp'},
+    {name = 'jedi'},
   },
   snippet = {
     expand = function(args)
