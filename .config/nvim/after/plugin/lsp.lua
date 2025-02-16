@@ -42,6 +42,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+require'lspconfig'.ruff.setup {
+  init_options = {
+    settings = {
+      lint = {
+        select = {"ALL"},  -- Enable all lint rules
+        fixable = {"ALL"},  -- Enable fixes for all rules
+      },
+      logLevel = "debug",
+    }
+  },
+  on_attach = custom_attach,
+  capabilities = capabilities,
+}
+
 require'lspconfig'.pylsp.setup {
   on_attach = custom_attach,
   settings = {
@@ -54,15 +68,14 @@ require'lspconfig'.pylsp.setup {
           include_class_objects = true,
           include_function_objects = true,
         },
-        -- Disable other linters since we're using Ruff
-        black = { enabled = false },
-        autopep8 = { enabled = false },
-        yapf = { enabled = false },
+        -- Disable all pylsp linting since we're using Ruff
         pylint = { enabled = false },
         pyflakes = { enabled = false },
         pycodestyle = { enabled = false },
         pylsp_mypy = { enabled = false },
         pyls_isort = { enabled = false },
+        mccabe = { enabled = false },
+        rope_autoimport = { enabled = true },  -- Enable auto-import
       },
     },
   },
@@ -72,6 +85,21 @@ require'lspconfig'.pylsp.setup {
   capabilities = capabilities,
 }
 
+-- Add this autocmd after the LSP configurations
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup('lsp_attach_ruff', { clear = true }),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client == nil then
+      return
+    end
+    if client.name == 'ruff' then
+      -- Disable hover in favor of pylsp
+      client.server_capabilities.hoverProvider = false
+    end
+  end,
+  desc = 'LSP: Configure Ruff capabilities',
+})
 
 local cmp = require('cmp')
 
