@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  
+  use('windwp/nvim-autopairs')
 
   use({'neovim/nvim-lspconfig'})
   use({'hrsh7th/nvim-cmp'})
