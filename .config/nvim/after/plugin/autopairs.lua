@@ -9,18 +9,3 @@ npairs.setup({
     },
 })
 
--- Add specific rules for Python
-npairs.add_rules({
-    Rule("(", ")", "python")
-        :with_pair(function(opts)
-            return vim.tbl_contains({'string'}, vim.tbo.get_current_node():type())
-        end),
-    Rule("[", "]", "python")
-        :with_pair(function(opts)
-            return vim.tbl_contains({'string'}, vim.tbo.get_current_node():type())
-        end),
-    Rule("{", "}", "python")
-        :with_pair(function(opts)
-            return vim.tbl_contains({'string'}, vim.tbo.get_current_node():type())
-        end),
-})
