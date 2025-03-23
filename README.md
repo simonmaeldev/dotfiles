@@ -68,6 +68,7 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim \
 && uv tool install python-lsp-server \
 && uv tool install ruff
+&& uv tool install pyright
 ```
 
 installing package manager (packer) and lsp for python

@@ -1,3 +1,12 @@
+local harpoon = require("harpoon")
+harpoon.setup({
+    menu = {
+        width = vim.api.nvim_win_get_width(0) * 0.8,
+        height = vim.api.nvim_win_get_height(0) * 0.6,
+        border = "rounded",
+    }
+})
+
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
