@@ -18,10 +18,15 @@ media-control stream |
             raw_title=$(jq -r '.payload.title' <<<"$line")
             raw_artist=$(jq -r '.payload.artist' <<<"$line")
 
-            title=$(truncate_text "$raw_title" 25)
-            artist=$(truncate_text "$raw_artist" 15)
+            # Hide if nothing is playing (null values)
+            if [ "$raw_title" = "null" ] || [ "$raw_artist" = "null" ] || [ -z "$raw_title" ] || [ -z "$raw_artist" ]; then
+                sketchybar --set media drawing=off
+            else
+                title=$(truncate_text "$raw_title" 25)
+                artist=$(truncate_text "$raw_artist" 15)
 
-            label="$title – $artist"
-            sketchybar --set media label="$label" icon="􀑪"
+                label="$title – $artist"
+                sketchybar --set media drawing=on label="$label" icon="󰝚"
+            fi
         fi
     done

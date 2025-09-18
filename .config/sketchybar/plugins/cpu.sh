@@ -8,4 +8,4 @@ cpu_usage_int=$(printf "%.0f" "$cpu_usage")
 cpu_norm=$(echo "$cpu_usage_int / 8" | bc)
 cpu_int=$(printf "%.0f" "$cpu_norm")
 
-sketchybar --set "$NAME" icon="􀫥" label="${cpu_int}%"
+sketchybar --set "$NAME" icon="CPU" label="${cpu_int}%"

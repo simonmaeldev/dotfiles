@@ -25,8 +25,8 @@ sketchybar --bar "${bar[@]}"
 ##### Changing Defaults #####
 
 default=(
-  icon.font="JetBrains Mono:Medium:14.0"
-  label.font="JetBrains Mono:Medium:14.0"
+  icon.font="FiraCode Nerd Font Propo:Medium:14.0"
+  label.font="FiraCode Nerd Font Propo:Medium:14.0"
   icon.color=0xffffffff
   label.color=0xffffffff
   icon.padding_left=4
@@ -63,31 +63,22 @@ do
 done
 
 
-sketchybar --add bracket spaces spacing space.6 \
+sketchybar --add bracket spaces spacing space.1 space.2 space.3 space.4 space.5 space.6 \
            --set spaces background.height=23 \
                         background.color=$BACKGROUND \
-                        background.border_width=0 \
+                        background.border_width=0
 
-sketchybar --add item media left \
-           --set media script="$PLUGIN_DIR/media.sh" \
-                       background.color=$BACKGROUND \
-                       background.height=23 \
-                       padding_left=10 \
-                       icon.padding_left=10 \
-                       label.padding_right=10 \
-           --subscribe media media_change \
-
-
-sketchybar --add item front_app center \
+sketchybar --add item front_app left \
            --set front_app icon.drawing=off \
                           script="$PLUGIN_DIR/front_app.sh" \
                           background.drawing=off \
-                          label.color=0xff000000 \
+                          label.color=0xffffffff \
                           background.height=23 \
                           background.color=$BACKGROUND \
                           background.border_width=0 \
                           label.padding_left=15 \
                           label.padding_right=15 \
+                          padding_left=10 \
            --subscribe front_app front_app_switched
 
 sketchybar --add item clock right \
@@ -121,6 +112,15 @@ sketchybar --add item memory right \
            --set memory script="$PLUGIN_DIR/memory.sh" \
                      update_freq=5 \
                      padding_left=10
+
+sketchybar --add item media right \
+           --set media script="$PLUGIN_DIR/media.sh" \
+                       background.color=$BACKGROUND \
+                       background.height=23 \
+                       padding_left=10 \
+                       icon.padding_left=10 \
+                       label.padding_right=10 \
+           --subscribe media media_change
 
 sketchybar --add bracket systeminfo battery memory \
            --set systeminfo background.height=23 \

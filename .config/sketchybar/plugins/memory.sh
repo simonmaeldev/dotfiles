@@ -16,4 +16,4 @@ used=$(((active + wired) * page_size))
 gb_used=$(echo "scale=1; $used/1024/1024/1024" | bc)
 
 # Update SketchyBar item
-sketchybar --set "$NAME" icon="􀫦" label="${gb_used}GB"
+sketchybar --set "$NAME" icon="MEM" label="${gb_used}GB"
