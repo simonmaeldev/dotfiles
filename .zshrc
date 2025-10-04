@@ -125,3 +125,6 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
   ssh-add
 fi
 
+# Run fastfetch on terminal startup
+fastfetch
+
