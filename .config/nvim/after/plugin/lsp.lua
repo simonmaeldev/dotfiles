@@ -26,30 +26,56 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
     vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
     vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+    vim.keymap.set('n', '<leader>f', function()
+        -- First format the buffer
+        vim.lsp.buf.format({async = false})
+        -- Then organize imports
+        vim.lsp.buf.code_action({ only = "source.organizeImports" })
+    end, opts)
     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    vim.keymap.set('n', '<leader>rf', function()
+      vim.lsp.buf.execute_command({
+        command = 'ruff.applyAutofix',
+        arguments = {vim.api.nvim_buf_get_name(0)}
+      })
+    end, opts)
   end,
 })
+
+require'lspconfig'.ruff.setup {
+  init_options = {
+    settings = {
+      lint = {
+        select = {"ALL"},  -- Enable all lint rules
+        fixable = {"ALL"},  -- Enable fixes for all rules
+      },
+      logLevel = "debug",
+    }
+  },
+  on_attach = custom_attach,
+  capabilities = capabilities,
+}
 
 require'lspconfig'.pylsp.setup {
   on_attach = custom_attach,
   settings = {
     pylsp = {
       plugins = {
-        -- formatter options
-        black = { enabled = false },
-        autopep8 = { enabled = false },
-        yapf = { enabled = false },
-        -- linter options
-        pylint = { enabled = false, executable = "pylint" },
+        jedi_completion = { 
+          enabled = true,
+          fuzzy = true,
+          include_params = true,
+          include_class_objects = true,
+          include_function_objects = true,
+        },
+        -- Disable all pylsp linting since we're using Ruff
+        pylint = { enabled = false },
         pyflakes = { enabled = false },
         pycodestyle = { enabled = false },
-        -- type checker
         pylsp_mypy = { enabled = false },
-        -- auto-completion options
-        jedi_completion = { fuzzy = false },
-        -- import sorting
         pyls_isort = { enabled = false },
+        mccabe = { enabled = false },
+        rope_autoimport = { enabled = true },  -- Enable auto-import
       },
     },
   },
@@ -59,12 +85,28 @@ require'lspconfig'.pylsp.setup {
   capabilities = capabilities,
 }
 
+-- Add this autocmd after the LSP configurations
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup('lsp_attach_ruff', { clear = true }),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client == nil then
+      return
+    end
+    if client.name == 'ruff' then
+      -- Disable hover in favor of pylsp
+      client.server_capabilities.hoverProvider = false
+    end
+  end,
+  desc = 'LSP: Configure Ruff capabilities',
+})
 
 local cmp = require('cmp')
 
 cmp.setup({
   sources = {
     {name = 'nvim_lsp'},
+    {name = 'jedi'},
   },
   snippet = {
     expand = function(args)

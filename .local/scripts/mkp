@@ -1,0 +1,9 @@
+#!/bin/bash
+
+DIR=$1
+mkdir -p $DIR
+cd $DIR
+git init
+cp -r ~/dotfiles/claude_code_base .claude
+uv venv
+source .venv/bin/activate
